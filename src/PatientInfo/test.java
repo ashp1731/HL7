@@ -5,6 +5,8 @@ import java.io.*;
 
 public class test
 {
+	
+	// Test program to read file
 	public static void main(String[]args)
 	{
 		File f = new File("messages.txt");
