@@ -31,12 +31,14 @@ File f = new File("messages.txt");
 			{
 				String[] arrayPID = pid.get(i).split("\\|");
 				Patient patient = new Patient();
-				patient = getPatientInfo.getPatientInfo(arrayPID);
+				patient = getPatientInfo.getPatientInfo(arrayPID);;
 				listPatientObject.add(patient);
 				
 				System.out.println(Arrays.toString(arrayPID));
 			}
 			
+			Patient[] arrayPatientObject = new Patient[listPatientObject.size()];
+			listPatientObject.toArray(arrayPatientObject);
 			
 
 		}
