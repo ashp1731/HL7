@@ -2,7 +2,7 @@ package PatientInfo;
 import java.util.*;
 public class Patient
 {
-
+// Ashwini comment
 	private int setID, patientID;
 	private String name, race, primaryLanguage, ssn,Citizenship,PatientAddress, patientPhoneNumber, Firstname, Lastname;
 	private char sex, maritalStatus, patientDeathInd;
