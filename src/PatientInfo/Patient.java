@@ -4,16 +4,14 @@ public class Patient
 {
 // Patient class : to store Patient Information for each PID line
 	private int setID ;
-	private String 	patientID, firstName, lastName, suffix, 
+	private String 	patientID, firstName, lastName, middleInitial, prefix, suffix, 
 					race, primaryLanguage, ssn,citizenship, phoneNumber;
 	private char sex, maritalStatus, patientDeathInd;
 	private Date dob, dod;
 	private Address address;
 
 	
-	public Patient() {
-		
-	}
+	public Patient() {}
 	
 //public Patient(int setID,int patientID,String Firstname,String Lastname,String race,String primaryLanguage,String ssn,String Citizenship,String PatientAddress,char sex,char maritalStatus,char patientDeathInd,Date DOB) {
 //
@@ -51,6 +49,17 @@ public void setFirstName(String firstName) {this.firstName = firstName;}
 
 public String getLastName() {return lastName;}
 public void setLastName(String lastName) {this.lastName = lastName;}
+
+
+public String getMiddleInitial() {return middleInitial;}
+public void setMiddleInitial(String middleInitial) {this.middleInitial = middleInitial;}
+
+
+public String getPrefix() {return prefix;}
+public void setPrefix(String prefix) {this.prefix = prefix;}
+
+public String getSuffix() {return suffix;}
+public void setSuffix(String suffix) {this.suffix = suffix;}
 
 public String getRace() {return race;}
 public void setRace(String race) {this.race = race;}
