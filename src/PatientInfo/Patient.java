@@ -2,19 +2,29 @@ package PatientInfo;
 import java.util.*;
 public class Patient
 {
+
 	private int setID, patientID;
-	private String name, race, primaryLanguage, ssn,Citizenship,PatientAddress;
+	private String name, race, primaryLanguage, ssn,Citizenship,PatientAddress, patientPhoneNumber, Firstname, Lastname;
 	private char sex, maritalStatus, patientDeathInd;
-	private Date DOB;
+	private Date DOB, dod;
+
+	
 	public Patient() {
 		
 	}
-public Patient(int setID,int patientID,String name,String race,String primaryLanguage,String ssn,String Citizenship,String PatientAddress,char sex,char maritalStatus,char patientDeathInd,Date DOB) {
+public Patient(int setID,int patientID,String Firstname,String Lastname,String race,String primaryLanguage,String ssn,String Citizenship,String PatientAddress,char sex,char maritalStatus,char patientDeathInd,Date DOB) {
+
 		int ID=(int)(Math.random()*2000);
 		setID=ID;
 		int PID=(int)(Math.random()*2000);
 		patientID=PID;
+
 		this.name=name;
+
+		this.patientPhoneNumber=patientPhoneNumber;
+		this.Firstname=Firstname;
+		this.Lastname=Lastname;
+
 		this.race=race;
 		this.primaryLanguage=primaryLanguage;
 		this.ssn=ssn;
@@ -24,7 +34,9 @@ public Patient(int setID,int patientID,String name,String race,String primaryLan
 		this.maritalStatus=maritalStatus;
 		this.patientDeathInd=patientDeathInd;
 		this.DOB=DOB;
+		this.dod=dod;
 	}
+
 public int getSetID() {
 	return setID;
 }
@@ -36,6 +48,7 @@ public int getPatientID() {
 }
 public void setPatientID(int patientID) {
 	this.patientID = patientID;
+
 	
 }
 public String getName() {
@@ -43,6 +56,26 @@ public String getName() {
 }
 public void setName(String name) {
 	this.name = name;
+
+}
+public String getPatientPhoneNumber() {
+	return patientPhoneNumber;
+}
+public void setPatientPhoneNumber(String patientPhoneNumber) {
+	this.patientPhoneNumber = patientPhoneNumber;
+}
+public String getFirstname() {
+	return Firstname;
+}
+public void setFirstname(String firstname) {
+	Firstname = firstname;
+}
+public String getLastname() {
+	return Lastname;
+}
+public void setLastname(String lastname) {
+	Lastname = lastname;
+
 }
 public String getRace() {
 	return race;
@@ -98,5 +131,12 @@ public Date getDOB() {
 public void setDOB(Date dOB) {
 	DOB = dOB;
 }
-	
+
+public Date getDOD() {
+	return dod;
+}
+public void setDOD(Date dod) {
+	this.dod = dod;
+}
+
 }
