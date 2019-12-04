@@ -6,7 +6,8 @@ public class Patient
 	private int setID ;
 	private String 	patientID, firstName, lastName, middleInitial, prefix, suffix, 
 					race, primaryLanguage, ssn,citizenship, phoneNumber;
-	private char sex, maritalStatus, patientDeathInd;
+	private char sex, maritalStatus;
+	private boolean patientDeathInd;
 	private Date dob, dod;
 	private Address address;
 
@@ -82,8 +83,8 @@ public void setSex(char sex) {this.sex = sex;}
 public char getMaritalStatus() {return maritalStatus;}
 public void setMaritalStatus(char maritalStatus) {this.maritalStatus = maritalStatus;}
 
-public char getPatientDeathInd() {return patientDeathInd;}
-public void setPatientDeathInd(char patientDeathInd) {this.patientDeathInd = patientDeathInd;}
+public boolean getPatientDeathInd() {return patientDeathInd;}
+public void setPatientDeathInd(boolean patientDeathInd) {this.patientDeathInd = patientDeathInd;}
 
 public Date getDob() {return dob;}
 public void setDob(Date dob) {this.dob = dob;}
