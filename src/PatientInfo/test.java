@@ -24,11 +24,13 @@ public class test
 				}
 			}
 			System.out.println(pid.size());
+//			System.out.println(pid);
 			for(int i = 0; i < pid.size(); i++)
 			{
 				//System.out.println(pid.get(i));
 				String[] arrayPID = pid.get(i).split("\\|");
-//				getPatienInfo(arrayPID);
+				Patient patient = new Patient();
+				patient = getPatientInfo(arrayPID);
 				System.out.println(Arrays.toString(arrayPID));
 			}
 
@@ -37,6 +39,13 @@ public class test
 		{
 			System.out.println(ex);
 		}
+	}
+	
+	public static Patient getPatientInfo(String[] array) {
+		
+		
+		Patient patient = new Patient();
+		return patient;
 	}
 	
 
