@@ -19,8 +19,18 @@ public class getPatientInfo {
 		 patient.setPrimaryLanguage(arrayPID[15]);
 		 patient.setSsn(arrayPID[19]);
 		 patient.setCitizenship(arrayPID[26]);
-		 //patient.setPatientAddress(arrayPID[11]);
-		patient.setPhoneNumber(arrayPID[13]);
+		 
+		 // Address Field
+		 String[] arrayAddress = arrayPID[11].split("\\^");
+		 Address address = new Address();
+		 address.setStreet(arrayAddress[0]);
+		 address.setCity(arrayAddress[2]);
+		 address.setState(arrayAddress[3]);
+		 address.setZipCode(Integer.parseInt(arrayAddress[4]));
+		 address.setCountry(arrayAddress[5]);
+		 patient.setAddress(address);
+		 
+		 patient.setPhoneNumber(arrayPID[13]);
 			return patient;
 	 }
 			public static void main(String[]args) {
