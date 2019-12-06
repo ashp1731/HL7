@@ -29,9 +29,12 @@ public class test
 			{
 				//System.out.println(pid.get(i));
 				String[] arrayPID = pid.get(i).split("\\|");
-				Patient patient = new Patient();
-				patient = getPatientInfo(arrayPID);
 				System.out.println(Arrays.toString(arrayPID));
+				
+		
+				Patient patient = new Patient();
+//				patient = getPatientInfo.getPatientInfo(arrayPID);
+//				System.out.println(Arrays.toString(arrayPID));
 			}
 
 		}
@@ -41,13 +44,13 @@ public class test
 		}
 	}
 	
-	public static Patient getPatientInfo(String[] array) {
-		
-		
-		Patient patient = new Patient();
-		return patient;
-	}
-	
+//	public static Patient getPatientInfo(String[] array) {
+//		
+//		
+//		Patient patient = new Patient();
+//		return patient;
+//	}
+//	
 
 
 

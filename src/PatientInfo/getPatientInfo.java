@@ -6,32 +6,104 @@ public class getPatientInfo {
 	
 	 static Patient getPatientInfo(String[]arrayPID) {
 		 Patient patient = new Patient();
-		 patient.setSetID(Integer.parseInt(arrayPID[1]));
-		 patient.setPatientID((arrayPID[2]));
-		 String[]arrayName=arrayPID[5].split("\\^");
-		 patient.setLastName(arrayName[0]);
-		 patient.setFirstName(arrayName[1]);
-		 patient.setMiddleInitial(arrayName[2]);
-		 patient.setSuffix(arrayName[3]);
-		 patient.setPrefix(arrayName[4]);
+		 patient.incrementObject();
 		 
-		 patient.setRace(arrayPID[10]);
-		 patient.setPrimaryLanguage(arrayPID[15]);
-		 patient.setSsn(arrayPID[19]);
-		 patient.setCitizenship(arrayPID[26]);
-		 
-		 // Address Field
-		 String[] arrayAddress = arrayPID[11].split("\\^");
-		 Address address = new Address();
-		 address.setStreet(arrayAddress[0]);
-		 address.setCity(arrayAddress[2]);
-		 address.setState(arrayAddress[3]);
-		 address.setZipCode(Integer.parseInt(arrayAddress[4]));
-		 address.setCountry(arrayAddress[5]);
-		 patient.setAddress(address);
-		 
-		 patient.setPhoneNumber(arrayPID[13]);
-			return patient;
+		 if(arrayPID.length > 0)
+		 {
+			 for(int i = 0; i < arrayPID.length; i++)
+			 {
+				 switch(i) {
+				 case 1 :
+					 // Retrieve Set ID
+					 if(!arrayPID[1].isEmpty()) {
+						 patient.setSetID(Integer.parseInt(arrayPID[i]));
+					 }
+					 break;
+				 case 2 :
+					 // Retrieve Patient ID
+					 patient.setPatientID((arrayPID[i]));
+					 break;
+				 case 5 : 
+					// Retrieve Patient Name Information
+					 String[]arrayName=arrayPID[5].split("\\^");
+					 if(arrayName.length > 0) {
+						 for(int j = 0; j < arrayName.length; j++) {
+							 switch(j) {
+							 case 0 :
+								 patient.setLastName(arrayName[j]);
+								 break;
+							 case 1 :
+								 patient.setFirstName(arrayName[j]);
+								 break;
+							 case 2 :
+								 patient.setMiddleInitial(arrayName[j]);
+								 break;
+							 case 3 :
+								 patient.setSuffix(arrayName[j]);
+								 break;
+							 case 4 :
+								 patient.setPrefix(arrayName[j]);
+								 break;
+							 }
+						 }
+					 }
+					 break;
+				 case 10 :
+					 // Retrieve Race
+					 patient.setRace(arrayPID[i]);
+					 break;
+				 case 11 : 
+					 //Retrieve Patient Address Information
+					 String[] arrayAddress = arrayPID[11].split("\\^");
+					 if(arrayAddress.length > 0) {
+						 Address address = new Address();
+						 for (int j = 0; j < arrayAddress.length; j++) {
+							 switch(j){
+							 case 0 :
+								 address.setStreet(arrayAddress[j]);
+								 break;
+							 case 2 :
+								 address.setCity(arrayAddress[j]);
+								 break;
+							 case 3 :
+								 address.setState(arrayAddress[j]);
+								 break;
+							 case 4 :
+								 if(!arrayAddress[j].equals("")) {
+									 String zipCode = arrayAddress[j].substring(0,4);
+									 address.setZipCode(Integer.parseInt(zipCode));
+								 }
+
+								 break;
+							 case 5 : 
+								 address.setCountry(arrayAddress[j]);
+								 break;
+							 }
+						 }
+						 patient.setAddress(address);
+					 }
+					 break;
+				 case 13 : 
+					 patient.setPhoneNumber(arrayPID[13]);
+					 break;
+				 case 15 :
+					 // Retrieve Primary Language
+					 patient.setPrimaryLanguage(arrayPID[i]);
+					 break;
+				 case 19 :
+					 // Retrieve SSN
+					 patient.setSsn(arrayPID[i]);
+					 break;
+				 case 26 :
+					 // Retrieve Citizenship
+					 patient.setCitizenship(arrayPID[i]);
+					 break;
+				 }
+			 }
+			 System.out.println(patient.getNumOfObjects());		
+		 }
+		 return patient;
+		
 	 }
 			public static void main(String[]args) {
 				 String[]arrayAddress = "115 MAINSTREET^^GOODTOWN^KY^42010^USA^L^010".split("\\^");

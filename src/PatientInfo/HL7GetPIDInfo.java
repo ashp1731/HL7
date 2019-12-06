@@ -34,12 +34,12 @@ File f = new File("messages.txt");
 				patient = getPatientInfo.getPatientInfo(arrayPID);;
 				listPatientObject.add(patient);
 				
-				System.out.println(Arrays.toString(arrayPID));
+//				System.out.println(Arrays.toString(arrayPID));
 			}
 			
 			Patient[] arrayPatientObject = new Patient[listPatientObject.size()];
 			listPatientObject.toArray(arrayPatientObject);
-			
+			System.out.println(Arrays.toString(arrayPatientObject));
 
 		}
 		catch(FileNotFoundException ex)

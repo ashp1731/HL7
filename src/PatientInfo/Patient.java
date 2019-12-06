@@ -10,7 +10,7 @@ public class Patient
 	private boolean patientDeathInd;
 	private Date dob, dod;
 	private Address address;
-
+	private static int numberOfObjects;
 	
 	public Patient() {}
 	
@@ -95,4 +95,11 @@ public void setDod(Date dod) {this.dod = dod;}
 public Address getAddress() {return address;}
 public void setAddress(Address address) {this.address = address;}
 
+public void incrementObject(){
+	numberOfObjects++;
+}
+
+public int getNumOfObjects() {
+return numberOfObjects;
+}
 }
