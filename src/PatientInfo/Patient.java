@@ -10,7 +10,7 @@ public class Patient
 	private boolean patientDeathInd;
 	private Date dob, dod;
 	private Address address;
-
+	private static int numberOfObjects;
 	
 	public Patient() {}
 	
@@ -77,8 +77,15 @@ public void setCitizenship(String citizenship) {this.citizenship = citizenship;}
 public String getPhoneNumber() {return phoneNumber;}
 public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
-public char getSex() {return sex;}
-public void setSex(char sex) {this.sex = sex;}
+
+
+public char getSex() {
+	return sex;
+}
+
+public void setSex(char sex) {
+	this.sex = sex;
+}
 
 public char getMaritalStatus() {return maritalStatus;}
 public void setMaritalStatus(char maritalStatus) {this.maritalStatus = maritalStatus;}
@@ -95,4 +102,11 @@ public void setDod(Date dod) {this.dod = dod;}
 public Address getAddress() {return address;}
 public void setAddress(Address address) {this.address = address;}
 
+public void incrementObject(){
+	numberOfObjects++;
+}
+
+public int getNumOfObjects() {
+return numberOfObjects;
+}
 }
