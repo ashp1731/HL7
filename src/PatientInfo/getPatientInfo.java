@@ -50,11 +50,46 @@ public class getPatientInfo {
 						 }
 					 }
 					 break;
-				 case 7 : // Date of Birth
+				 case 7:
+					//RETRIVE DATE-OF-BIRTH 
 					 break;
+				 case 8:
+//					 //RETRIVE SEX
+				 patient.setSex(arrayPID[i].charAt(0));
+					// Character.toString(ch)
+				 break;
+
 				 case 10 :
 					 // Retrieve Race
-					 patient.setRace(arrayPID[i]);
+					 if(!arrayPID[i].isEmpty())
+					 {
+						 String[] arrayRace = arrayPID[i].split("\\^");
+						 if(arrayRace.length > 0) {
+							 switch(arrayRace[0]) {
+							 case "2131-1" :
+								 patient.setRace("Other Race");
+								 break;
+							 case "2106-3" :
+								 patient.setRace("White");
+								 break;
+							 case "2076-8" :
+								 patient.setRace("Native Hawaiian or Other Pacific Islander");
+							 case "2054-5" :
+								 patient.setRace("Black or African American");
+								 break;
+							 case "2028-9" :
+								 patient.setRace("Asian");
+								 break;
+							 case "1002-5" : 
+								 patient.setRace("American Indian or Alaska Native");
+								 break;
+								 default :
+									 patient.setRace("Other Race");
+									 break;
+							 }
+						 }					 
+						
+						 }
 					 break;
 				 case 11 : 
 					 //Retrieve Patient Address Information
@@ -94,8 +129,14 @@ public class getPatientInfo {
 					 break;
 				 case 15 :
 					 // Retrieve Primary Language
-					 patient.setPrimaryLanguage(arrayPID[i]);
+//					 String[] arrayLanguage = arrayPID[i].split("\\^");
+//					 if(arrayLanguage.length > 0)
+//					 patient.setPrimaryLanguage(arrayLanguage[1]);
 					 break;
+//				 case 16:
+////					 //RETRIEVE MERITAL STATUS
+//				 patient.setMaritalStatus(arrayPID[i].charAt(0));
+//					 break;
 				 case 19 :
 					 // Retrieve SSN
 					 patient.setSsn(arrayPID[i]);
@@ -103,6 +144,13 @@ public class getPatientInfo {
 				 case 26 :
 					 // Retrieve Citizenship
 					 patient.setCitizenship(arrayPID[i]);
+					 break;
+				 case 29:
+					 //RETRIEVE  DATE-OF-DEAD
+					 
+				 case 30:
+					 //RETRIEVE PATIENT-DEATH-ID
+					 patient.setPatientDeathInd(Boolean.parseBoolean(arrayPID[i]));
 					 break;
 				 }
 			 }

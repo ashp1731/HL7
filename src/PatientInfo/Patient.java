@@ -53,8 +53,15 @@ public void setCitizenship(String citizenship) {this.citizenship = citizenship;}
 public String getPhoneNumber() {return phoneNumber;}
 public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
-public char getSex() {return sex;}
-public void setSex(char sex) {this.sex = sex;}
+
+
+public char getSex() {
+	return sex;
+}
+
+public void setSex(char sex) {
+	this.sex = sex;
+}
 
 public char getMaritalStatus() {return maritalStatus;}
 public void setMaritalStatus(char maritalStatus) {this.maritalStatus = maritalStatus;}

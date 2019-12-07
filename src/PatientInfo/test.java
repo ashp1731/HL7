@@ -44,7 +44,7 @@ public class test
 		}
 	}
 	
-//	public static Patient getPatientInfo(String[] array) {
+//	public static Patient getPatientInfo(String[x] array) {
 //		
 //		
 //		Patient patient = new Patient();
@@ -57,3 +57,21 @@ public class test
 	
 	
 }
+//static void getPatientInfo(String[]arrayPID) {
+//	 Patient patient = new Patient();
+//	 patient.setSetID(Integer.parseInt(arrayPID[1]));
+//	 patient.setPatientID((arrayPID[2]));
+//	 String[]arrayName=arrayPID[5].split("\\^");
+//	 patient.setLastName(arrayName[0]);
+//	 patient.setFirstName(arrayName[1]);
+//	 patient.setMiddleInitial(arrayName[2]);
+//	 patient.setSuffix(arrayName[3]);
+//	 patient.setPrefix(arrayName[4]);
+//	 
+//	 patient.setRace(arrayPID[10]);
+//	 patient.setPrimaryLanguage(arrayPID[15]);
+//	 patient.setSsn(arrayPID[19]);
+//	 patient.setCitizenship(arrayPID[26]);
+//	 //patient.setPatientAddress(arrayPID[11]);
+//	patient.setPhoneNumber(arrayPID[13]);
+//	//	return patient;
