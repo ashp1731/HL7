@@ -14,30 +14,6 @@ public class Patient
 	
 	public Patient() {}
 	
-//public Patient(int setID,int patientID,String Firstname,String Lastname,String race,String primaryLanguage,String ssn,String Citizenship,String PatientAddress,char sex,char maritalStatus,char patientDeathInd,Date DOB) {
-//
-//		int ID=(int)(Math.random()*2000);
-//		setID=ID;
-//		int PID=(int)(Math.random()*2000);
-//		patientID=PID;
-//
-//		this.name=name;
-//
-//		this.patientPhoneNumber=patientPhoneNumber;
-//		this.Firstname=Firstname;
-//		this.Lastname=Lastname;
-//
-//		this.race=race;
-//		this.primaryLanguage=primaryLanguage;
-//		this.ssn=ssn;
-//		this.Citizenship=Citizenship;
-//		this.PatientAddress=PatientAddress;
-//		this.sex=sex;
-//		this.maritalStatus=maritalStatus;
-//		this.patientDeathInd=patientDeathInd;
-//		this.DOB=DOB;
-//		this.dod=dod;
-//	}
 
 public int getSetID() {return setID;}
 public void setSetID(int setID) {this.setID = setID;}

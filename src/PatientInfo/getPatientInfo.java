@@ -15,17 +15,19 @@ public class getPatientInfo {
 				 switch(i) {
 				 case 1 :
 					 // Retrieve Set ID
-					 if(!arrayPID[1].isEmpty()) {
+					 if(!arrayPID[i].isEmpty()) {
 						 patient.setSetID(Integer.parseInt(arrayPID[i]));
 					 }
 					 break;
-				 case 2 :
+				 case 3 :
 					 // Retrieve Patient ID
-					 patient.setPatientID((arrayPID[i]));
+					 String[] arrayPatientID = arrayPID[i].split("\\^");
+					 if(arrayPatientID.length > 0)
+					 patient.setPatientID((arrayPatientID[0]));
 					 break;
 				 case 5 : 
 					// Retrieve Patient Name Information
-					 String[]arrayName=arrayPID[5].split("\\^");
+					 String[]arrayName=arrayPID[i].split("\\^");
 					 if(arrayName.length > 0) {
 						 for(int j = 0; j < arrayName.length; j++) {
 							 switch(j) {
@@ -47,6 +49,8 @@ public class getPatientInfo {
 							 }
 						 }
 					 }
+					 break;
+				 case 7 : // Date of Birth
 					 break;
 				 case 10 :
 					 // Retrieve Race
@@ -85,6 +89,8 @@ public class getPatientInfo {
 					 break;
 				 case 13 : 
 					 patient.setPhoneNumber(arrayPID[13]);
+					 break;
+				 case 14 : // Death date & time
 					 break;
 				 case 15 :
 					 // Retrieve Primary Language
