@@ -126,7 +126,7 @@ public class getPatientInfo {
 					 patient.setPhoneNumber(arrayPID[13]);
 					 break;
 				 case 14 : // Death date & time
-					 
+					 date
 					 break;
 				 case 15 :
 					 // Retrieve Primary Language
