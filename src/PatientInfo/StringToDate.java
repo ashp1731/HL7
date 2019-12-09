@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 
 public class StringToDate {
 
-	public static Date convertStringToDate(String s) throws Exception {
-		Date date = new SimpleDateFormat("yyyymmdd").parse(s);
+	public static Date convertStringToDate(String s, String format) throws Exception {
+		Date date = new SimpleDateFormat(format).parse(s);
 		return date;
 	}
 }
