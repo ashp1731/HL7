@@ -53,9 +53,18 @@ public class getPatientInfo {
 					 break;
 				 case 7:
 					//RETRIVE DATE-OF-BIRTH 
+					 try {
+						 if(!arrayPID[i].isEmpty()) {
+							 patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
+						 }
+					 }
+					 catch (Exception ex){
+						 System.out.println(ex);
+					 }
 					 break;
+					 
 				 case 8:
-//					 //RETRIVE SEX
+					 //RETRIVE SEX
 					 if(!arrayPID[i].isEmpty()) {
 						 patient.setSex(arrayPID[i].charAt(0));
 					 }			 
@@ -124,21 +133,14 @@ public class getPatientInfo {
 						 patient.setAddress(address);
 					 }
 					 break;
-				 case 13 : 
-					 patient.setPhoneNumber(arrayPID[13]);
+				 case 13 :
+					 // Retrieve Phone number
+					 StringBuilder stri=new StringBuilder();
+                     stri.insert(3,"-");
+                     stri.insert(7,"-");
+					patient.setPhoneNumber(stri.toString()); 	
 					 break;
-
-				 case 14 : // Birth date & time
-					 try {
-						 if(!arrayPID[i].isEmpty()) {
-							 patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
-						 }
-					 }
-					 catch (Exception ex){
-						 System.out.println(ex);
-					 }
-					 break;
-				
+						
 				 case 15 :
 					 // Retrieve Primary Language
                  String[] arrayLanguage=arrayPID[15].split("\\^");
@@ -146,13 +148,13 @@ public class getPatientInfo {
 				 for(int j = 0; j < arrayLanguage.length; j++) {
 					 switch(j) {
 					 case 1 :
-						 patient.setLastName(arrayLanguage[j]);
+						 patient.setPrimaryLanguage(arrayLanguage[j]);
 						 break;
 					 }
 				 }
                 }
 				 case 16:
-////					 //RETRIEVE MERITAL STATUS
+					 //RETRIEVE MERITAL STATUS
 					 if(!arrayPID[i].isEmpty()) {
 						 patient.setMaritalStatus(arrayPID[i].charAt(0)); 
 					 }		
@@ -160,9 +162,9 @@ public class getPatientInfo {
 	
 				 case 19 :
 					 // Retrieve SSN
-StringBuilder str=new StringBuilder();
-str.insert(3,"-");
-str.insert(6,"-");
+                   StringBuilder str=new StringBuilder();
+                       str.insert(3,"-");
+                       str.insert(7,"-");
 					patient.setSsn(str.toString()); 	
 					 break;
 				 case 26 :
