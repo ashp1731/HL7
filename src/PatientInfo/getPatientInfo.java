@@ -3,7 +3,8 @@ package PatientInfo;
 import java.util.Arrays;
 
 public class getPatientInfo {
-	
+
+
 	 static Patient getPatientInfo(String[]arrayPID) {
 		 Patient patient = new Patient();
 		 patient.incrementObject();
@@ -55,8 +56,9 @@ public class getPatientInfo {
 					 break;
 				 case 8:
 //					 //RETRIVE SEX
-				 patient.setSex(arrayPID[i].charAt(0));
-					// Character.toString(ch)
+					 if(!arrayPID[i].isEmpty()) {
+						 patient.setSex(arrayPID[i].charAt(0));
+					 }			 
 				 break;
 
 				 case 10 :
@@ -125,17 +127,13 @@ public class getPatientInfo {
 				 case 13 : 
 					 patient.setPhoneNumber(arrayPID[13]);
 					 break;
-				 case 14 : // Death date & time
-					 break;
 				 case 15 :
 					 // Retrieve Primary Language
-//					 String[] arrayLanguage = arrayPID[i].split("\\^");
-//					 if(arrayLanguage.length > 0)
-//					 patient.setPrimaryLanguage(arrayLanguage[1]);
+
 					 break;
-//				 case 16:
+				 case 16:
 ////					 //RETRIEVE MERITAL STATUS
-//				 patient.setMaritalStatus(arrayPID[i].charAt(0));
+
 //					 break;
 				 case 19 :
 					 // Retrieve SSN
@@ -146,11 +144,30 @@ public class getPatientInfo {
 					 patient.setCitizenship(arrayPID[i]);
 					 break;
 				 case 29:
-					 //RETRIEVE  DATE-OF-DEAD
+					 //RETRIEVE  Date of Death
+					 try {
+						 if(!arrayPID[i].isEmpty()) {
+							 patient.setDod(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
+						 }
+					 }
+					 catch (Exception ex){
+						 System.out.println(ex);
+					 }
+					 break;
 					 
 				 case 30:
 					 //RETRIEVE PATIENT-DEATH-ID
-					 patient.setPatientDeathInd(Boolean.parseBoolean(arrayPID[i]));
+					 if(!arrayPID[i].isEmpty()) {
+						 if(arrayPID[i]== "NO")
+						 {
+							 patient.setPatientDeathInd(false);
+						 }
+						 else
+						 {
+							 patient.setPatientDeathInd(true);
+						 }
+						 patient.setPatientDeathInd(Boolean.parseBoolean(arrayPID[i])); 
+					 }
 					 break;
 				 }
 			 }
