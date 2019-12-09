@@ -100,6 +100,9 @@ public class getPatientInfo {
 					 break;
 				 case 16:
 //					 //RETRIEVE MERITAL STATUS
+					 if(!arrayPID[i].isEmpty()) {
+						 patient.setMaritalStatus(arrayPID[i].charAt(0));
+					 }
 				 patient.setMaritalStatus(arrayPID[i].charAt(0));
 					 break;
 				 case 19 :
