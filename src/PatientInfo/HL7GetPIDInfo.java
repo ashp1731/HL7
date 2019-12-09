@@ -1,3 +1,4 @@
+
 package PatientInfo;
 
 import java.io.File;
@@ -39,7 +40,29 @@ File f = new File("messages.txt");
 			
 			Patient[] arrayPatientObject = new Patient[listPatientObject.size()];
 			listPatientObject.toArray(arrayPatientObject);
-			System.out.println(Arrays.toString(arrayPatientObject));
+			for(int i = 0; i < arrayPatientObject.length; i++)
+			{
+				System.out.println("Set ID : " + arrayPatientObject[i].getSetID());
+				System.out.println("Patient ID : " + arrayPatientObject[i].getPatientID());
+				System.out.println("Patient Name : " + arrayPatientObject[i].getFirstName() + " " + arrayPatientObject[i].getLastName());
+				System.out.println("Date of Birth : " + arrayPatientObject[i].getDob());
+				System.out.println("Sex : " + arrayPatientObject[i].getSex());
+				System.out.println("Race : " + arrayPatientObject[i].getRace());
+				System.out.println("Citizenship : " + arrayPatientObject[i].getCitizenship());
+				System.out.println("Address : " + arrayPatientObject[i].getAddress().getStreet() + " " 
+									+ arrayPatientObject[i].getAddress().getCity() 
+									+ arrayPatientObject[i].getAddress().getState() + " " 
+									+ arrayPatientObject[i].getAddress().getZipCode() + " " 
+									+ arrayPatientObject[i].getAddress().getCountry());
+				System.out.println("Phone Number : " + arrayPatientObject[i].getPhoneNumber());
+				System.out.println("Primary Language : " + arrayPatientObject[i].getPrimaryLanguage());
+				System.out.println("Marital Status : " + arrayPatientObject[i].getMaritalStatus());
+				System.out.println("SSN : " + arrayPatientObject[i].getSsn());
+				System.out.println("Death Indicator : " + arrayPatientObject[i].getPatientDeathInd());
+				System.out.println("Death Date : " + arrayPatientObject[i].getDod() + "\n");
+				
+			}
+//			System.out.println(Arrays.toString(arrayPatientObject));
 
 		}
 		catch(FileNotFoundException ex)

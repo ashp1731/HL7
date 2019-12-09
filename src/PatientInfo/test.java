@@ -43,14 +43,7 @@ public class test
 			System.out.println(ex);
 		}
 	}
-	
-//	public static Patient getPatientInfo(String[x] array) {
-//		
-//		
-//		Patient patient = new Patient();
-//		return patient;
-//	}
-//	
+
 
 
 

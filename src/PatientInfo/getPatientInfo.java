@@ -15,17 +15,19 @@ public class getPatientInfo {
 				 switch(i) {
 				 case 1 :
 					 // Retrieve Set ID
-					 if(!arrayPID[1].isEmpty()) {
+					 if(!arrayPID[i].isEmpty()) {
 						 patient.setSetID(Integer.parseInt(arrayPID[i]));
 					 }
 					 break;
-				 case 2 :
+				 case 3 :
 					 // Retrieve Patient ID
-					 patient.setPatientID((arrayPID[i]));
+					 String[] arrayPatientID = arrayPID[i].split("\\^");
+					 if(arrayPatientID.length > 0)
+					 patient.setPatientID((arrayPatientID[0]));
 					 break;
 				 case 5 : 
 					// Retrieve Patient Name Information
-					 String[]arrayName=arrayPID[5].split("\\^");
+					 String[]arrayName=arrayPID[i].split("\\^");
 					 if(arrayName.length > 0) {
 						 for(int j = 0; j < arrayName.length; j++) {
 							 switch(j) {
@@ -56,9 +58,38 @@ public class getPatientInfo {
 				 patient.setSex(arrayPID[i].charAt(0));
 					// Character.toString(ch)
 				 break;
+
 				 case 10 :
 					 // Retrieve Race
-					 patient.setRace(arrayPID[i]);
+					 if(!arrayPID[i].isEmpty())
+					 {
+						 String[] arrayRace = arrayPID[i].split("\\^");
+						 if(arrayRace.length > 0) {
+							 switch(arrayRace[0]) {
+							 case "2131-1" :
+								 patient.setRace("Other Race");
+								 break;
+							 case "2106-3" :
+								 patient.setRace("White");
+								 break;
+							 case "2076-8" :
+								 patient.setRace("Native Hawaiian or Other Pacific Islander");
+							 case "2054-5" :
+								 patient.setRace("Black or African American");
+								 break;
+							 case "2028-9" :
+								 patient.setRace("Asian");
+								 break;
+							 case "1002-5" : 
+								 patient.setRace("American Indian or Alaska Native");
+								 break;
+								 default :
+									 patient.setRace("Other Race");
+									 break;
+							 }
+						 }					 
+						
+						 }
 					 break;
 				 case 11 : 
 					 //Retrieve Patient Address Information
@@ -94,17 +125,19 @@ public class getPatientInfo {
 				 case 13 : 
 					 patient.setPhoneNumber(arrayPID[13]);
 					 break;
+				 case 14 : // Death date & time
+					 
+					 break;
 				 case 15 :
 					 // Retrieve Primary Language
-					 patient.setPrimaryLanguage(arrayPID[i]);
+//					 String[] arrayLanguage = arrayPID[i].split("\\^");
+//					 if(arrayLanguage.length > 0)
+//					 patient.setPrimaryLanguage(arrayLanguage[1]);
 					 break;
-				 case 16:
-//					 //RETRIEVE MERITAL STATUS
-					 if(!arrayPID[i].isEmpty()) {
-						 patient.setMaritalStatus(arrayPID[i].charAt(0));
-					 }
-				 patient.setMaritalStatus(arrayPID[i].charAt(0));
-					 break;
+//				 case 16:
+////					 //RETRIEVE MERITAL STATUS
+//				 patient.setMaritalStatus(arrayPID[i].charAt(0));
+//					 break;
 				 case 19 :
 					 // Retrieve SSN
 					 patient.setSsn(arrayPID[i]);
