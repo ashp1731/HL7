@@ -113,23 +113,27 @@ public class getPatientInfo {
 								break;
 							case 4:
 								if (!arrayAddress[j].equals("")) {
-									String zipCode = arrayAddress[j].substring(0, 4);
+									String zipCode = arrayAddress[j].substring(0, 5);
 									address.setZipCode(Integer.parseInt(zipCode));
 								}
 							case 5:
 								address.setCountry(arrayAddress[j]);
 								break;
-							}	
-						}		
+							}
+						}
+						patient.setAddress(address);
 					}
 				case 13:
 
-					// Retrieve Phone number
-					StringBuilder strPhoneNumber = new StringBuilder();
-					
-					strPhoneNumber.insert(3, "-");
-					strPhoneNumber.insert(7, "-");
-					patient.setPhoneNumber(strPhoneNumber.toString());
+					if(!arrayPID[i].isEmpty()) {
+						// Retrieve Phone number
+						StringBuilder strPhoneNumber = new StringBuilder();
+						strPhoneNumber.append(arrayPID[i]);
+						strPhoneNumber.insert(3, "-");
+						strPhoneNumber.insert(7, "-");
+						patient.setPhoneNumber(strPhoneNumber.toString());	
+					}
+
 					break;
 				case 15:
 					// Retrieve Primary Language
@@ -151,10 +155,14 @@ public class getPatientInfo {
 					break;
 				case 19:
 					// Retrieve SSN
-					StringBuilder str = new StringBuilder();
-					str.insert(3, "-");
-					str.insert(7, "-");
-					patient.setSsn(str.toString());
+					if(!arrayPID[i].isEmpty()) {
+						StringBuilder strSSN = new StringBuilder();
+						strSSN.append(arrayPID[i]);
+						strSSN.insert(3, "-");
+						strSSN.insert(7, "-");
+						patient.setSsn(strSSN.toString());
+					}
+
 
 					break;
 				case 26:
@@ -188,7 +196,6 @@ public class getPatientInfo {
 			System.out.println(patient.getNumOfObjects());
 		}
 		return patient;
-
 
 	}
 }
