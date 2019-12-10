@@ -119,31 +119,25 @@ public class getPatientInfo {
 							case 5:
 								address.setCountry(arrayAddress[j]);
 								break;
-							}	
-						}		
+							}
+						}
 					}
 				case 13:
 
 					// Retrieve Phone number
 					String[] arrayPhoneNumber = arrayPID[13].split("\\^");
-					if(arrayPhoneNumber.length > 0) {
-					StringBuilder strPhoneNumber = new StringBuilder();
-					strPhoneNumber.append(arrayPID[i]);
-					for (int j = 0; j < arrayPhoneNumber.length; j++) {
-						switch (j) {
-						case 4:
-							patient.setPhoneNumber(arrayPhoneNumber[j]);
-							strPhoneNumber.insert(3, "-");
-							break;	
-						case 5:
-							patient.setPhoneNumber(arrayPhoneNumber[j]);
-							strPhoneNumber.insert(3, "-");
-					//patient.setPhoneNumber(strPhoneNumber.toString());
-					break;	
+					if (arrayPhoneNumber.length > 0) {
+						for (int j = 0; j < arrayPhoneNumber.length; j++) {
+							switch (j) {
+							case 4:
+								patient.setPhoneNumber(arrayPhoneNumber[j]);
+								break;
+							case 5:
+								patient.setPhoneNumber(arrayPhoneNumber[j]);
+								break;
+							}
 						}
 					}
-					}
-					
 				case 15:
 					// Retrieve Primary Language
 					String[] arrayLanguage = arrayPID[15].split("\\^");
@@ -202,7 +196,8 @@ public class getPatientInfo {
 			System.out.println(patient.getNumOfObjects());
 		}
 		return patient;
-
-
 	}
+
+
+	
 }
