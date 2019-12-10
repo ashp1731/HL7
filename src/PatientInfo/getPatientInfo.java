@@ -128,7 +128,7 @@ public class getPatientInfo {
 					StringBuilder strPhoneNumber = new StringBuilder();
 					
 					strPhoneNumber.insert(3, "-");
-					strPhoneNumber.insert(7, "-");
+					strPhoneNumber.insert(6, "-");
 					patient.setPhoneNumber(strPhoneNumber.toString());
 					break;
 				case 15:
@@ -151,10 +151,10 @@ public class getPatientInfo {
 					break;
 				case 19:
 					// Retrieve SSN
-					StringBuilder str = new StringBuilder();
-					str.insert(3, "-");
-					str.insert(7, "-");
-					patient.setSsn(str.toString());
+					StringBuilder strSsn = new StringBuilder();
+					strSsn.insert(3, "-");
+					strSsn.insert(7, "-");
+					patient.setSsn(strSsn.toString());
 
 					break;
 				case 26:
