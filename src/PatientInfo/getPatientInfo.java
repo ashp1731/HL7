@@ -126,12 +126,24 @@ public class getPatientInfo {
 
 					// Retrieve Phone number
 					String[] arrayPhoneNumber = arrayPID[13].split("\\^");
+					if(arrayPhoneNumber.length > 0) {
 					StringBuilder strPhoneNumber = new StringBuilder();
 					strPhoneNumber.append(arrayPID[i]);
-					strPhoneNumber.insert(3, "-");
-					strPhoneNumber.insert(7, "-");
-					patient.setPhoneNumber(strPhoneNumber.toString());
-					break;
+					for (int j = 0; j < arrayPhoneNumber.length; j++) {
+						switch (j) {
+						case 4:
+							patient.setPhoneNumber(arrayPhoneNumber[j]);
+							strPhoneNumber.insert(3, "-");
+							break;	
+						case 5:
+							patient.setPhoneNumber(arrayPhoneNumber[j]);
+							strPhoneNumber.insert(3, "-");
+					//patient.setPhoneNumber(strPhoneNumber.toString());
+					break;	
+						}
+					}
+					}
+					
 				case 15:
 					// Retrieve Primary Language
 					String[] arrayLanguage = arrayPID[15].split("\\^");
