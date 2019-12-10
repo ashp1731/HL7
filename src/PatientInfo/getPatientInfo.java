@@ -50,14 +50,21 @@ public class getPatientInfo {
 					break;
 				case 7:
 					// RETRIVE DATE-OF-BIRTH
+					try {
+						if (!arrayPID[i].isEmpty()) {
+							patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
+						}
+					} catch (Exception ex) {
+						System.out.println(ex);
+					}
 					break;
 				case 8:
-//					 //RETRIVE SEX
+					// RETRIVE SEX
+
 					if (!arrayPID[i].isEmpty()) {
 						patient.setSex(arrayPID[i].charAt(0));
 					}
 					break;
-
 				case 10:
 					// Retrieve Race
 					if (!arrayPID[i].isEmpty()) {
@@ -109,30 +116,46 @@ public class getPatientInfo {
 									String zipCode = arrayAddress[j].substring(0, 4);
 									address.setZipCode(Integer.parseInt(zipCode));
 								}
-
-								break;
 							case 5:
 								address.setCountry(arrayAddress[j]);
 								break;
-							}
-						}
-						patient.setAddress(address);
+							}	
+						}		
 					}
-					break;
 				case 13:
-					patient.setPhoneNumber(arrayPID[13]);
+
+					// Retrieve Phone number
+					StringBuilder strPhoneNumber = new StringBuilder();
+					
+					strPhoneNumber.insert(3, "-");
+					strPhoneNumber.insert(7, "-");
+					patient.setPhoneNumber(strPhoneNumber.toString());
 					break;
 				case 15:
 					// Retrieve Primary Language
-
-					break;
+					String[] arrayLanguage = arrayPID[15].split("\\^");
+					if (arrayLanguage.length > 0) {
+						for (int j = 0; j < arrayLanguage.length; j++) {
+							switch (j) {
+							case 1:
+								patient.setPrimaryLanguage(arrayLanguage[j]);
+								break;
+							}
+						}
+					}
 				case 16:
-////					 //RETRIEVE MERITAL STATUS
-
-//					 break;
+					// RETRIEVE MARITAL STATUS
+					if (!arrayPID[i].isEmpty()) {
+						patient.setMaritalStatus(arrayPID[i].charAt(0));
+					}
+					break;
 				case 19:
 					// Retrieve SSN
-					patient.setSsn(arrayPID[i]);
+					StringBuilder str = new StringBuilder();
+					str.insert(3, "-");
+					str.insert(7, "-");
+					patient.setSsn(str.toString());
+
 					break;
 				case 26:
 					// Retrieve Citizenship
@@ -166,11 +189,6 @@ public class getPatientInfo {
 		}
 		return patient;
 
-	}
 
-	public static void main(String[] args) {
-		String[] arrayAddress = "115 MAINSTREET^^GOODTOWN^KY^42010^USA^L^010".split("\\^");
-		System.out.println(Arrays.toString(arrayAddress));
 	}
-
 }
