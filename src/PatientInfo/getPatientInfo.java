@@ -60,6 +60,7 @@ public class getPatientInfo {
 					break;
 				case 8:
 					// RETRIVE SEX
+
 					if (!arrayPID[i].isEmpty()) {
 						patient.setSex(arrayPID[i].charAt(0));
 					}
@@ -115,22 +116,20 @@ public class getPatientInfo {
 									String zipCode = arrayAddress[j].substring(0, 4);
 									address.setZipCode(Integer.parseInt(zipCode));
 								}
-
-								break;
 							case 5:
 								address.setCountry(arrayAddress[j]);
 								break;
-							}
-						}
-						patient.setAddress(address);
+							}	
+						}		
 					}
-					break;
 				case 13:
+
 					// Retrieve Phone number
-					StringBuilder stri = new StringBuilder();
-					stri.insert(3, "-");
-					stri.insert(7, "-");
-					patient.setPhoneNumber(stri.toString());
+					StringBuilder strPhoneNumber = new StringBuilder();
+					
+					strPhoneNumber.insert(3, "-");
+					strPhoneNumber.insert(7, "-");
+					patient.setPhoneNumber(strPhoneNumber.toString());
 					break;
 				case 15:
 					// Retrieve Primary Language
@@ -145,7 +144,7 @@ public class getPatientInfo {
 						}
 					}
 				case 16:
-					// RETRIEVE MERITAL STATUS
+					// RETRIEVE MARITAL STATUS
 					if (!arrayPID[i].isEmpty()) {
 						patient.setMaritalStatus(arrayPID[i].charAt(0));
 					}
@@ -156,6 +155,7 @@ public class getPatientInfo {
 					str.insert(3, "-");
 					str.insert(7, "-");
 					patient.setSsn(str.toString());
+
 					break;
 				case 26:
 					// Retrieve Citizenship
@@ -171,6 +171,7 @@ public class getPatientInfo {
 						System.out.println(ex);
 					}
 					break;
+
 				case 30:
 					// RETRIEVE PATIENT-DEATH-ID
 					if (!arrayPID[i].isEmpty()) {
@@ -187,10 +188,7 @@ public class getPatientInfo {
 			System.out.println(patient.getNumOfObjects());
 		}
 		return patient;
-	}
-	public static void main(String[] args) {
-//				 String[]arraySsn = "123121234";
-//				System.out.println(Arrays.toString(arraySsn));
-	}
 
+
+	}
 }
