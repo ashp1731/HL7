@@ -125,10 +125,11 @@ public class getPatientInfo {
 				case 13:
 
 					// Retrieve Phone number
+					String[] arrayPhoneNumber = arrayPID[13].split("\\^");
 					StringBuilder strPhoneNumber = new StringBuilder();
-					
+					strPhoneNumber.append(arrayPID[i]);
 					strPhoneNumber.insert(3, "-");
-					strPhoneNumber.insert(6, "-");
+					strPhoneNumber.insert(7, "-");
 					patient.setPhoneNumber(strPhoneNumber.toString());
 					break;
 				case 15:
@@ -152,6 +153,7 @@ public class getPatientInfo {
 				case 19:
 					// Retrieve SSN
 					StringBuilder strSsn = new StringBuilder();
+					strSsn.append(arrayPID[i]);
 					strSsn.insert(3, "-");
 					strSsn.insert(7, "-");
 					patient.setSsn(strSsn.toString());
