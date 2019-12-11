@@ -52,6 +52,7 @@ public class getPatientInfo {
 					// RETRIVE DATE-OF-BIRTH
 					try {
 						if (!arrayPID[i].isEmpty()) {
+							
 							patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
 						}
 					} catch (Exception ex) {
