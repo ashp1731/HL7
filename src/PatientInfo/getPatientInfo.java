@@ -123,17 +123,41 @@ public class getPatientInfo {
 						}
 						patient.setAddress(address);
 					}
+					break;
 				case 13:
-
-					if(!arrayPID[i].isEmpty()) {
-						// Retrieve Phone number
+					// Retrieve Phone number
+					if (!arrayPID[i].isEmpty()) {
 						StringBuilder strPhoneNumber = new StringBuilder();
-						strPhoneNumber.append(arrayPID[i]);
+
+						if (arrayPID[i].contains("^")) {
+							String[] arrayPhoneNumber = arrayPID[i].split("\\^");
+							if (arrayPhoneNumber.length > 0) {
+								for (int j = 0; j < arrayPhoneNumber.length; j++) {
+
+									switch (j) {
+									case 5:
+										strPhoneNumber.append(arrayPhoneNumber[j]);
+										break;
+									case 6:
+										strPhoneNumber.append(arrayPhoneNumber[j]);
+										break;
+									}
+								}
+							} 
+						}
+						else if(arrayPID[i].contains("(")) {
+							strPhoneNumber.append(arrayPID[i].substring(1, 4));
+							strPhoneNumber.append(arrayPID[i].substring(5,8));
+							strPhoneNumber.append(arrayPID[i].substring(9,13));
+						}
+						else {
+							strPhoneNumber.append(arrayPID[i]);
+						}
+						
 						strPhoneNumber.insert(3, "-");
 						strPhoneNumber.insert(7, "-");
-						patient.setPhoneNumber(strPhoneNumber.toString());	
+						patient.setPhoneNumber(strPhoneNumber.toString());
 					}
-
 					break;
 				case 15:
 					// Retrieve Primary Language
@@ -155,15 +179,13 @@ public class getPatientInfo {
 					break;
 				case 19:
 					// Retrieve SSN
-					if(!arrayPID[i].isEmpty()) {
+					if (!arrayPID[i].isEmpty()) {
 						StringBuilder strSSN = new StringBuilder();
 						strSSN.append(arrayPID[i]);
 						strSSN.insert(3, "-");
-						strSSN.insert(7, "-");
+						strSSN.insert(6, "-");
 						patient.setSsn(strSSN.toString());
 					}
-
-
 					break;
 				case 26:
 					// Retrieve Citizenship
@@ -196,6 +218,5 @@ public class getPatientInfo {
 			System.out.println(patient.getNumOfObjects());
 		}
 		return patient;
-
 	}
 }
