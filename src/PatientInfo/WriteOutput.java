@@ -10,8 +10,10 @@ public class WriteOutput {
 		java.io.File file = new java.io.File("patient-summary.txt");
 
 		if (file.exists()) {
-			System.out.println("file already exits");
-			System.exit(1);
+			file.delete();
+			file.createNewFile();
+//			System.out.println("file already exits");
+//			System.exit(1);
 		}
 
 		java.io.PrintWriter output = new java.io.PrintWriter(file);
