@@ -173,7 +173,7 @@ public class Patient {
 		return "Patient [setID=" + setID + ", patientID=" + patientID + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", middleInitial=" + middleInitial + ", prefix=" + prefix + ", suffix=" + suffix
 				+ ", race=" + race + ", primaryLanguage=" + primaryLanguage + ", ssn=" + ssn + ", citizenship="
-				+ citizenship + ", phoneNumber=" + phoneNumber + ", sex=" + sex + ", maritalStatus=" + maritalStatus
+				+ citizenship + ", phoneNumber=" + phoneNumber + ", sex=" + sex 
 				+ ", patientDeathInd=" + patientDeathInd + ", dob=" + dob + ", dod=" + dod + ", address="
 				+ address.getStreet() + " " + address.getCity() + " " + address.getState() + " " + address.getZipCode()
 				+ " " + address.getCountry() + "]";

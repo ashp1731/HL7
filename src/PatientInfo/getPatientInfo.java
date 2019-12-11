@@ -52,6 +52,7 @@ public class getPatientInfo {
 					// RETRIVE DATE-OF-BIRTH
 					try {
 						if (!arrayPID[i].isEmpty()) {
+							
 							patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
 						}
 					} catch (Exception ex) {
@@ -113,7 +114,7 @@ public class getPatientInfo {
 								break;
 							case 4:
 								if (!arrayAddress[j].equals("")) {
-									String zipCode = arrayAddress[j].substring(0, 4);
+									String zipCode = arrayAddress[j].substring(0, 5);
 									address.setZipCode(Integer.parseInt(zipCode));
 								}
 							case 5:
@@ -121,23 +122,44 @@ public class getPatientInfo {
 								break;
 							}
 						}
+						patient.setAddress(address);
 					}
+					break;
 				case 13:
-
 					// Retrieve Phone number
-					String[] arrayPhoneNumber = arrayPID[13].split("\\^");
-					if (arrayPhoneNumber.length > 0) {
-						for (int j = 0; j < arrayPhoneNumber.length; j++) {
-							switch (j) {
-							case 4:
-								patient.setPhoneNumber(arrayPhoneNumber[j]);
-								break;
-							case 5:
-								patient.setPhoneNumber(arrayPhoneNumber[j]);
-								break;
-							}
+					if (!arrayPID[i].isEmpty()) {
+						StringBuilder strPhoneNumber = new StringBuilder();
+
+						if (arrayPID[i].contains("^")) {
+							String[] arrayPhoneNumber = arrayPID[i].split("\\^");
+							if (arrayPhoneNumber.length > 0) {
+								for (int j = 0; j < arrayPhoneNumber.length; j++) {
+
+									switch (j) {
+									case 5:
+										strPhoneNumber.append(arrayPhoneNumber[j]);
+										break;
+									case 6:
+										strPhoneNumber.append(arrayPhoneNumber[j]);
+										break;
+									}
+								}
+							} 
 						}
+						else if(arrayPID[i].contains("(")) {
+							strPhoneNumber.append(arrayPID[i].substring(1, 4));
+							strPhoneNumber.append(arrayPID[i].substring(5,8));
+							strPhoneNumber.append(arrayPID[i].substring(9,13));
+						}
+						else {
+							strPhoneNumber.append(arrayPID[i]);
+						}
+						
+						strPhoneNumber.insert(3, "-");
+						strPhoneNumber.insert(7, "-");
+						patient.setPhoneNumber(strPhoneNumber.toString());
 					}
+					break;
 				case 15:
 					// Retrieve Primary Language
 					String[] arrayLanguage = arrayPID[15].split("\\^");
@@ -158,12 +180,13 @@ public class getPatientInfo {
 					break;
 				case 19:
 					// Retrieve SSN
-					StringBuilder strSsn = new StringBuilder();
-					strSsn.append(arrayPID[i]);
-					strSsn.insert(3, "-");
-					strSsn.insert(7, "-");
-					patient.setSsn(strSsn.toString());
-
+					if (!arrayPID[i].isEmpty()) {
+						StringBuilder strSSN = new StringBuilder();
+						strSSN.append(arrayPID[i]);
+						strSSN.insert(3, "-");
+						strSSN.insert(6, "-");
+						patient.setSsn(strSSN.toString());
+					}
 					break;
 				case 26:
 					// Retrieve Citizenship
@@ -197,7 +220,4 @@ public class getPatientInfo {
 		}
 		return patient;
 	}
-
-
-	
 }
