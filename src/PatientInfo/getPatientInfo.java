@@ -1,6 +1,8 @@
 package PatientInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+
 
 public class getPatientInfo {
 
@@ -118,11 +120,13 @@ public class getPatientInfo {
 									try {
 										String zipCode = arrayAddress[j].substring(0, 5);
 										address.setZipCode(Integer.parseInt(zipCode));
-									} catch (Exception ex) {
+									} 
+									catch (Exception ex) {
 										address.setZipCode(0);
-//										addressError = "PID" + i + "Data Incosistency in address field";
+										addressError = "PID " + patient.getPatientID() 
+										+ " Data Incosistency in address field " 
+										+ (new SimpleDateFormat("yyyy-mm-dd hh:mm:ss")).format(new java.util.Date());
 									}
-
 								}
 							case 5:
 								address.setCountry(arrayAddress[j]);
@@ -130,13 +134,13 @@ public class getPatientInfo {
 							}
 						}
 						patient.setAddress(address);
-//						if (addressError.contains("Data Inconsistency")) {
-//							try {
-//								WriteOutput.writeErrorPID(addressError);
-//							} catch (Exception ex) {
-//								System.out.println(ex);
-//							}
-//						}
+						if (addressError.startsWith("PID")) {
+							try {
+								WriteOutput.writeErrorPID(addressError);
+							} catch (Exception ex) {
+								System.out.println(ex);
+							}
+						}
 					}
 					break;
 				case 13:
@@ -228,7 +232,7 @@ public class getPatientInfo {
 					break;
 				}
 			}
-			System.out.println(patient.getNumOfObjects());
+//			System.out.println(patient.getNumOfObjects());
 		}
 		return patient;
 	}
