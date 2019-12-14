@@ -52,8 +52,8 @@ public class getPatientInfo {
 					// RETRIVE DATE-OF-BIRTH
 					try {
 						if (!arrayPID[i].isEmpty()) {
-							
-							patient.setDob(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
+
+							patient.setDob(DateFormat.convertStringToDate(arrayPID[i], "yyyyMMdd"));
 						}
 					} catch (Exception ex) {
 						System.out.println(ex);
@@ -101,6 +101,7 @@ public class getPatientInfo {
 					String[] arrayAddress = arrayPID[11].split("\\^");
 					if (arrayAddress.length > 0) {
 						Address address = new Address();
+						String addressError = "";
 						for (int j = 0; j < arrayAddress.length; j++) {
 							switch (j) {
 							case 0:
@@ -114,8 +115,14 @@ public class getPatientInfo {
 								break;
 							case 4:
 								if (!arrayAddress[j].equals("")) {
-									String zipCode = arrayAddress[j].substring(0, 5);
-									address.setZipCode(Integer.parseInt(zipCode));
+									try {
+										String zipCode = arrayAddress[j].substring(0, 5);
+										address.setZipCode(Integer.parseInt(zipCode));
+									} catch (Exception ex) {
+										address.setZipCode(0);
+//										addressError = "PID" + i + "Data Incosistency in address field";
+									}
+
 								}
 							case 5:
 								address.setCountry(arrayAddress[j]);
@@ -123,6 +130,13 @@ public class getPatientInfo {
 							}
 						}
 						patient.setAddress(address);
+//						if (addressError.contains("Data Inconsistency")) {
+//							try {
+//								WriteOutput.writeErrorPID(addressError);
+//							} catch (Exception ex) {
+//								System.out.println(ex);
+//							}
+//						}
 					}
 					break;
 				case 13:
@@ -144,17 +158,15 @@ public class getPatientInfo {
 										break;
 									}
 								}
-							} 
-						}
-						else if(arrayPID[i].contains("(")) {
+							}
+						} else if (arrayPID[i].contains("(")) {
 							strPhoneNumber.append(arrayPID[i].substring(1, 4));
-							strPhoneNumber.append(arrayPID[i].substring(5,8));
-							strPhoneNumber.append(arrayPID[i].substring(9,13));
-						}
-						else {
+							strPhoneNumber.append(arrayPID[i].substring(5, 8));
+							strPhoneNumber.append(arrayPID[i].substring(9, 13));
+						} else {
 							strPhoneNumber.append(arrayPID[i]);
 						}
-						
+
 						strPhoneNumber.insert(3, "-");
 						strPhoneNumber.insert(7, "-");
 						patient.setPhoneNumber(strPhoneNumber.toString());
@@ -196,7 +208,7 @@ public class getPatientInfo {
 					// RETRIEVE Date of Death
 					try {
 						if (!arrayPID[i].isEmpty()) {
-							patient.setDod(StringToDate.convertStringToDate(arrayPID[i], "yyyymmdd"));
+							patient.setDod(DateFormat.convertStringToDate(arrayPID[i], "yyyymmdd"));
 						}
 					} catch (Exception ex) {
 						System.out.println(ex);

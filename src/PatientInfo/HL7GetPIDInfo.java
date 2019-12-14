@@ -35,11 +35,9 @@ public class HL7GetPIDInfo {
 			listPatientObject.toArray(arrayPatientObject);
 			try {
 				WriteOutput.writeToFile(arrayPatientObject);
-			}
-			catch(Exception ex) {
+			} catch (Exception ex) {
 				System.out.println(ex);
 			}
-			
 
 			for (int i = 0; i < arrayPatientObject.length; i++) {
 				System.out.println(arrayPatientObject[i].toString()); // toString Method is called on Patient Object to
