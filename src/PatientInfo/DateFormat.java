@@ -14,8 +14,4 @@ public class DateFormat {
 		String strDate = new SimpleDateFormat(format).format(date);
 		return strDate;
 	}
-
-	public static void main(String[] args) {
-		System.out.println(convertDateToString(new Date(), "MM/dd/yyyy"));
-	}
 }
