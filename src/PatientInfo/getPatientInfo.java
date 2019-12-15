@@ -3,7 +3,6 @@ package PatientInfo;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
-
 public class getPatientInfo {
 
 	static Patient getPatientInfo(String[] arrayPID) {
@@ -120,12 +119,12 @@ public class getPatientInfo {
 									try {
 										String zipCode = arrayAddress[j].substring(0, 5);
 										address.setZipCode(Integer.parseInt(zipCode));
-									} 
-									catch (Exception ex) {
+									} catch (Exception ex) {
 										address.setZipCode(0);
-										addressError = "PID " + patient.getPatientID() 
-										+ " Data Incosistency in address field " 
-										+ (new SimpleDateFormat("yyyy-mm-dd hh:mm:ss")).format(new java.util.Date());
+										addressError = "PID " + patient.getPatientID()
+												+ " Data Incosistency in address field "
+												+ (new SimpleDateFormat("yyyy-mm-dd hh:mm:ss"))
+														.format(new java.util.Date());
 									}
 								}
 							case 5:
